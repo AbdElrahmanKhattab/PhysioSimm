@@ -12,6 +12,20 @@ const JWT_SECRET = process.env.JWT_SECRET || 'super-secret-key';
 app.use(cors());
 app.use(express.json());
 
+// Health Check Route (Must be before other routes)
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
+// Global Error Logging
+process.on('unhandledRejection', (err) => {
+  console.error('Unhandled Rejection:', err);
+});
+
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+});
+
 // MySQL configuration
 const dbConfig = {
   host: process.env.MYSQLHOST || '127.0.0.1',
