@@ -57,7 +57,7 @@ let pool;
 async function init() {
   try {
     await initDbPromise;
-    pool = mysql.createPool({ ...dbConfig, database: 'PhysioCaseLab' });
+    pool = mysql.createPool({ ...dbConfig, database: dbConfig.database });
     // Use async migrations
     await runMigrationsAsync();
     console.log('Database initialization complete.');
