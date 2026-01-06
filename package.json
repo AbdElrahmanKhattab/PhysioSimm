@@ -2,11 +2,14 @@
   "name": "physiosim-root",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "scripts": {
     "install:all": "npm install && npm run postinstall",
     "postinstall": "cd frontend && npm install --include=dev && cd ../backend && npm install",
     "build:frontend": "cd frontend && npm run build",
-    "start": "cd backend && npm start",
+    "start": "node backend/server.js",
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && npm run dev",
